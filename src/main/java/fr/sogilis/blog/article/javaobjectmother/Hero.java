@@ -15,8 +15,7 @@ public class Hero {
     public enum Caste {
         KING,
         WIZARD,
-        KNIGHT,
-        FARMER
+        KNIGHT
     }
 
     public Hero(String name, Kingdom allegiance, Caste caste, LocalDate deathDate) {
