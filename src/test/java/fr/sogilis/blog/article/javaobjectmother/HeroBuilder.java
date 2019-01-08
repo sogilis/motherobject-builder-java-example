@@ -2,6 +2,8 @@ package fr.sogilis.blog.article.javaobjectmother;
 
 import fr.sogilis.blog.article.javaobjectmother.Hero.Caste;
 
+import java.time.LocalDate;
+
 public class HeroBuilder {
 
     private String name;
@@ -9,6 +11,8 @@ public class HeroBuilder {
     private Kingdom allegiance;
 
     private Caste caste;
+
+    private LocalDate deathDate;
 
     public HeroBuilder name(String name) {
         this.name = name;
@@ -25,7 +29,12 @@ public class HeroBuilder {
         return this;
     }
 
+    public HeroBuilder deathDate(LocalDate date) {
+        this.deathDate = date;
+        return this;
+    }
+
     public Hero build() {
-        return new Hero(name, allegiance, caste);
+        return new Hero(name, allegiance, caste, deathDate);
     }
 }

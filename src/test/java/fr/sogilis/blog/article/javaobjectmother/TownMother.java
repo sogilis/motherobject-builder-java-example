@@ -6,4 +6,9 @@ public class TownMother {
         return new TownBuilder()
             .name("Vannes");
     }
+
+    public static TownBuilder kaamelott() {
+        return one()
+            .name("Kaamelott");
+    }
 }

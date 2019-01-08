@@ -7,4 +7,10 @@ public class KingdomMother {
             .name("Logres")
             .capital(TownMother.one().build());
     }
+
+    public static KingdomBuilder logres() {
+        return one()
+            .name("Logres")
+            .capital(TownMother.kaamelott().build());
+    }
 }

@@ -1,6 +1,9 @@
 package fr.sogilis.blog.article.javaobjectmother;
 
+import java.time.LocalDate;
+
 import static fr.sogilis.blog.article.javaobjectmother.Hero.Caste.KNIGHT;
+import static fr.sogilis.blog.article.javaobjectmother.Hero.Caste.WIZARD;
 
 public class HeroMother {
 
@@ -11,11 +14,16 @@ public class HeroMother {
             .caste(KNIGHT);
     }
 
-    public static HeroBuilder deadAt() {
-        return new HeroBuilder()
-            .name("Leodagan")
-            .allegiance(KingdomMother.one().build())
-            .caste(KNIGHT);
+    public static HeroBuilder deadAt(LocalDate date) {
+        return one()
+            .deathDate(date.minusDays(2));
+    }
+
+    public static HeroBuilder merlin() {
+        return one()
+            .name("Merlin")
+            .allegiance(KingdomMother.logres().build())
+            .caste(WIZARD);
     }
 }
 

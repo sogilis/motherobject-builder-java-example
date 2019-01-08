@@ -13,8 +13,8 @@ class TheTest {
     @DisplayName("Can you see all information I have to write in order to build a single knight?")
     void without_mother_object() {
         Kingdom kingdom = new Kingdom("Logres", new Town("Kaamelott"));
-        Hero aKing = new Hero("Arthur", kingdom, KING);
-        Hero aWizard = new Hero("Merlin", kingdom, WIZARD);
+        Hero aKing = new Hero("Arthur", kingdom, KING, null);
+        Hero aWizard = new Hero("Merlin", kingdom, WIZARD, null);
         assertFalse(aKing.canGiveOrderTo(aWizard));
     }
 
