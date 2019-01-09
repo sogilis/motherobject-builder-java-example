@@ -2,6 +2,8 @@ package fr.sogilis.blog.article.javaobjectmother;
 
 import java.time.LocalDate;
 
+import static java.time.temporal.ChronoUnit.YEARS;
+
 public class Hero {
 
     private String name;
@@ -9,6 +11,8 @@ public class Hero {
     private Kingdom allegiance;
 
     private Caste caste;
+
+    private LocalDate dateOfBirth;
 
     private LocalDate deathDate;
 
@@ -18,10 +22,11 @@ public class Hero {
         KNIGHT
     }
 
-    public Hero(String name, Kingdom allegiance, Caste caste, LocalDate deathDate) {
+    public Hero(String name, Kingdom allegiance, Caste caste, LocalDate dateOfBirth, LocalDate deathDate) {
         this.name = name;
         this.allegiance = allegiance;
         this.caste = caste;
+        this.dateOfBirth = dateOfBirth;
         this.deathDate = deathDate;
     }
 
@@ -37,11 +42,15 @@ public class Hero {
         return caste;
     }
 
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
     public LocalDate getDeathDate() {
         return deathDate;
     }
 
-    public boolean canGiveOrderTo(Hero hero) {
-        return caste.ordinal() > hero.caste.ordinal();
+    public long getAgeAt(LocalDate date) {
+        return YEARS.between(dateOfBirth, date);
     }
 }

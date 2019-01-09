@@ -12,6 +12,8 @@ public class HeroBuilder {
 
     private Caste caste;
 
+    private LocalDate dateOfBirth;
+
     private LocalDate deathDate;
 
     public HeroBuilder name(String name) {
@@ -29,12 +31,17 @@ public class HeroBuilder {
         return this;
     }
 
+    public HeroBuilder dateOfBirth(LocalDate date) {
+        this.dateOfBirth = date;
+        return this;
+    }
+
     public HeroBuilder deathDate(LocalDate date) {
         this.deathDate = date;
         return this;
     }
 
     public Hero build() {
-        return new Hero(name, allegiance, caste, deathDate);
+        return new Hero(name, allegiance, caste, dateOfBirth, deathDate);
     }
 }

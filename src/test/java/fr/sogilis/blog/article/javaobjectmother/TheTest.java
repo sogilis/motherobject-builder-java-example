@@ -1,28 +1,38 @@
 package fr.sogilis.blog.article.javaobjectmother;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static fr.sogilis.blog.article.javaobjectmother.Hero.Caste.KING;
+import java.time.LocalDate;
+
 import static fr.sogilis.blog.article.javaobjectmother.Hero.Caste.WIZARD;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class TheTest {
 
     @Test
-    @DisplayName("Can you see all information I have to write in order to build a single knight?")
+    @DisplayName("Can you see all information I have to write in order to build a single hero?")
     void without_mother_object() {
         Kingdom kingdom = new Kingdom("Logres", new Town("Kaamelott"));
-        Hero aKing = new Hero("Arthur", kingdom, KING, null);
-        Hero aWizard = new Hero("Merlin", kingdom, WIZARD, null);
-        assertFalse(aKing.canGiveOrderTo(aWizard));
+        LocalDate dateOfBirth = LocalDate.of(-360, 11, 21);
+        Hero hero = new Hero("Merlin", kingdom, WIZARD, dateOfBirth, null);
+
+        long age = hero.getAgeAt(LocalDate.of(524, 11, 21));
+
+        Assertions.assertThat(age)
+            .isEqualTo(884);
     }
 
     @Test
     @DisplayName("Now, if we ignore one() and build() boilerplate, we only have to provide which class and which caste")
     void with_mother_object() {
-        Hero aKing = HeroMother.one().caste(KING).build();
-        Hero aWizard = HeroMother.one().caste(WIZARD).build();
-        assertFalse(aKing.canGiveOrderTo(aWizard));
+        Hero hero = HeroMother.one()
+            .dateOfBirth(LocalDateMother.one().withYear(-360))
+            .build();
+
+        long age = hero.getAgeAt(LocalDateMother.one().withYear(524));
+
+        Assertions.assertThat(age)
+            .isEqualTo(884);
     }
 }
