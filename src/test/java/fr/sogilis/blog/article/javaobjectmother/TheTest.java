@@ -24,7 +24,6 @@ class TheTest {
     }
 
     @Test
-    @DisplayName("Now, if we ignore one() and build() boilerplate, we only have to provide which class and which caste")
     void with_mother_object() {
         Hero hero = HeroMother.one()
             .dateOfBirth(LocalDateMother.one().withYear(-360))
