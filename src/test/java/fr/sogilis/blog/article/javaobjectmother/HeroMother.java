@@ -11,7 +11,8 @@ public class HeroMother {
         return new HeroBuilder()
             .name("Leodagan")
             .allegiance(KingdomMother.one().build())
-            .caste(KNIGHT);
+            .caste(KNIGHT)
+            .dateOfBirth(LocalDateMother.one());
     }
 
     public static HeroBuilder deadAt(LocalDate date) {
